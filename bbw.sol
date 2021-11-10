@@ -3,35 +3,37 @@
 */
 
 /**
-   
-██████████████████████████████████████████████████████████
-█░░░░░░░░░░░░░░███░░░░░░░░░░░░░░███░░░░░░██████████░░░░░░█
-█░░▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀▄▀▄▀▄▀░░███░░▄▀░░██████████░░▄▀░░█
-█░░▄▀░░░░░░▄▀░░███░░▄▀░░░░░░▄▀░░███░░▄▀░░██████████░░▄▀░░█
-█░░▄▀░░██░░▄▀░░███░░▄▀░░██░░▄▀░░███░░▄▀░░██████████░░▄▀░░█
-█░░▄▀░░░░░░▄▀░░░░█░░▄▀░░░░░░▄▀░░░░█░░▄▀░░██░░░░░░██░░▄▀░░█
-█░░▄▀▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░██░░▄▀░░██░░▄▀░░█
-█░░▄▀░░░░░░░░▄▀░░█░░▄▀░░░░░░░░▄▀░░█░░▄▀░░██░░▄▀░░██░░▄▀░░█
-█░░▄▀░░████░░▄▀░░█░░▄▀░░████░░▄▀░░█░░▄▀░░░░░░▄▀░░░░░░▄▀░░█
-█░░▄▀░░░░░░░░▄▀░░█░░▄▀░░░░░░░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀░░█
-█░░▄▀▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░░░░░▄▀░░░░░░▄▀░░█
-█░░░░░░░░░░░░░░░░█░░░░░░░░░░░░░░░░█░░░░░░██░░░░░░██░░░░░░█
-██████████████████████████████████████████████████████████
+  
+──────────────────────────────────────────────────────────
+─██████████████───██████████████───██████──────────██████─
+─██░░░░░░░░░░██───██░░░░░░░░░░██───██░░██──────────██░░██─
+─██░░██████░░██───██░░██████░░██───██░░██──────────██░░██─
+─██░░██──██░░██───██░░██──██░░██───██░░██──────────██░░██─
+─██░░██████░░████─██░░██████░░████─██░░██──██████──██░░██─
+─██░░░░░░░░░░░░██─██░░░░░░░░░░░░██─██░░██──██░░██──██░░██─
+─██░░████████░░██─██░░████████░░██─██░░██──██░░██──██░░██─
+─██░░██────██░░██─██░░██────██░░██─██░░██████░░██████░░██─
+─██░░████████░░██─██░░████████░░██─██░░░░░░░░░░░░░░░░░░██─
+─██░░░░░░░░░░░░██─██░░░░░░░░░░░░██─██░░██████░░██████░░██─
+─████████████████─████████████████─██████──██████──██████─
+──────────────────────────────────────────────────────────
 
-   #BBW - #LIQ+#RFI+#SAFEMOON, combine together to #BBW. 
+   #BBW - #AQUARI+#LIQ+#RFI+#SAFEMOON, combine together to #BBW. 
 
    Great features:
    3% fee auto add to the liquidity pool to locked forever when selling
    1% fee auto distribute to all holders
-   1% fee auto moved to donation wallet
+   2% fee auto moved to donation wallet
 
-   100,000,000,000 total supply
-   1,000,000,000 tokens limitation for trade, which is 1% of the total supply
+   10,000,000,000 total supply
+   100,000,000 tokens limitation for trade, which is 1% of the total supply
    
-   Official Telegram Group: https://t.me/BuilBlackWealth
+   Official Telegram Group: https://t.me/aquariofficial
 
    3% fee for liquidity will go to an address that the contract creates, 
-   and the contract will sell it and add to liquidity automatically.
+   and the contract will sell it and add to liquidity automatically, 
+   it's the best part of the #AQUARI idea, increasing the liquidity pool automatically, 
+   help the pool grow from the small init pool.
 */
 
 pragma solidity ^0.8.3;
@@ -799,7 +801,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
 
-contract BUILDBLACKWEALTH is Context, IERC20, Ownable {
+contract BuildBlackWealth is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
 
@@ -812,21 +814,21 @@ contract BUILDBLACKWEALTH is Context, IERC20, Ownable {
     mapping (address => bool) private _isExcluded;
     address[] private _excluded;
 
-    address private _donationWalletAddress = 0x1dedae7A94368198d3d90471A4b2E2C0C42DCc3C;
+    address private _donationWalletAddress = 0x5C6A46b86606EEFA3b61873A12221231f251629b;
    
     uint256 private constant MAX = ~uint256(0);
-    uint256 private _tTotal = 100000 * 10**6 * 10**9;
+    uint256 private _tTotal = 100000 * 10**8 * 10**9;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
-    string private _name = "BUILDBLACKWEALTH";
+    string private _name = "BuildBlackWealth";
     string private _symbol = "BBW";
     uint8 private _decimals = 9;
     
     uint256 public _taxFee = 1;
     uint256 private _previousTaxFee = _taxFee;
     
-    uint256 public _donationFee = 1;
+    uint256 public _donationFee = 2;
     uint256 private _previousDonationFee = _donationFee;
 	
     uint256 public _liquidityFee = 3;
@@ -838,8 +840,8 @@ contract BUILDBLACKWEALTH is Context, IERC20, Ownable {
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true;
     
-    uint256 public _maxTxAmount = 1000 * 10**6 * 10**9;
-    uint256 private numTokensSellToAddToLiquidity = 1000 * 10**6 * 10**9;
+    uint256 public _maxTxAmount = 1000 * 10**8 * 10**9;
+    uint256 private numTokensSellToAddToLiquidity = 1000 * 10**8 * 10**9;
     
     event MinTokensBeforeSwapUpdated(uint256 minTokensBeforeSwap);
     event SwapAndLiquifyEnabledUpdated(bool enabled);
@@ -858,7 +860,7 @@ contract BUILDBLACKWEALTH is Context, IERC20, Ownable {
     constructor () {
          _rOwned[_msgSender()] = _rTotal;
         
-        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0xE592427A0AEce92De3Edee1F18E0157C05861564);
+        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
          // Create a uniswap pair for this new token
         uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
             .createPair(address(this), _uniswapV2Router.WETH());
